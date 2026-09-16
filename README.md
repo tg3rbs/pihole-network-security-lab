@@ -40,3 +40,25 @@ Confirmed that normal DNS requests resolve successfully:
 
 ```bash
 nslookup example.com 192.168.1.240
+```
+
+## Troubleshooting
+
+After rebooting the Raspberry Pi, the `pihole.local` hostname was no longer resolving from the client device. I scanned the local subnet to identify active hosts and located the Pi at `192.168.1.240`.
+
+I then connected directly using SSH:
+
+```bash
+ssh tg3rbs@192.168.1.240
+```
+
+This confirmed that the Raspberry Pi, Pi-hole service, and SSH server were operating correctly and that the issue was related to local hostname resolution rather than the Raspberry Pi itself.
+
+## Next Steps
+
+- Configure a DHCP reservation for the Raspberry Pi
+- Configure router-level DNS to use Pi-hole network-wide
+- Monitor DNS queries and blocked domains
+- Explore additional Pi-hole security and logging features
+
+
